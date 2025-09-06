@@ -1,13 +1,20 @@
 @import '../../../styles/variables';
 
-.score {
+.words-found {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
   width: 200px;
-  height: 112px;
+  height: 260px;
   border: 2px solid $secondary-color;
   flex-direction: column;
   padding: 15px;
+
+  .words {
+    width: 200px;
+    height: 280px;
+    text-align: center;
+    text-wrap: wrap;
+    overflow-y: auto;
+  }
 }

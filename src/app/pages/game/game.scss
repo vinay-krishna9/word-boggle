@@ -11,4 +11,11 @@
     flex-direction: row;
     gap: 10px;
   }
+
+  .score {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    gap: 10px;
+  }
 }

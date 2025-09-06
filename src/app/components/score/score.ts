@@ -7,6 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './score.scss',
 })
 export class Score {
-  @Input() foundWords: string[] = [];
   @Input() score: number = 0;
 }

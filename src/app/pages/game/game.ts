@@ -4,10 +4,11 @@ import { WordInput } from '../../components/word-input/word-input';
 import { Score } from '../../components/score/score';
 import { Scoring } from '../../services/scoring';
 import { RandomBoardGenerator } from '../../services/random-board-generator';
+import { WordsFound } from '../../components/words-found/words-found';
 
 @Component({
   selector: 'app-game',
-  imports: [Board, WordInput, Score],
+  imports: [Board, WordInput, Score, WordsFound],
   templateUrl: './game.html',
   styleUrl: './game.scss',
 })
