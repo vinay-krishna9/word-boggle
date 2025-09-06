@@ -18,6 +18,7 @@ export class Game {
   foundWords: string[] = [];
   score = 0;
   board: string[][] = [];
+  invalidWord = false;
 
   constructor() {
     this.startNewGame();
@@ -30,11 +31,14 @@ export class Game {
   }
 
   submitWord(word: string) {
-    console.log('🚀 ~ Game ~ submitWord ~ word:', word);
-    if (!this.foundWords.includes(word)) {
+    if (!this.foundWords.includes(word) && this._scoring.isWordValid(this.board, word)) {
       this.foundWords.push(word);
       this.score = this._scoring.calculateScore(this.foundWords);
+      this.invalidWord = false;
       console.log('🚀 ~ Game ~ submitWord ~ score:', this.score);
+    } else {
+      this.invalidWord = true;
+      console.error(`Invalid or duplicate word: ${word}`);
     }
   }
 }

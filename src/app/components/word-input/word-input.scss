@@ -2,16 +2,29 @@
   display: flex;
   justify-content: center;
   margin: 10px 0;
+  flex-direction: column;
 
-  input {
-    padding: 6px 8px;
-    font-size: 1rem;
-    margin-right: 6px;
+  .input-form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-direction: row;
+
+    input {
+      padding: 6px 8px;
+      font-size: 1rem;
+      margin-right: 6px;
+    }
+
+    button {
+      padding: 6px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
   }
 
-  button {
-    padding: 6px 12px;
-    font-size: 1rem;
-    cursor: pointer;
+  .error {
+    color: firebrick;
+    text-align: center;
   }
 }

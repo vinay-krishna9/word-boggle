@@ -75,4 +75,69 @@ export class Scoring {
       return this.calculateScore(uniqueWords);
     });
   }
+
+  /**
+   * Validate if the given word exists on the board following adjacency rules.
+   * @param board 4x4 letter board
+   * @param word word to check
+   * @returns if word is valid or not
+   */
+  isWordValid(board: string[][], word: string): boolean {
+    if (!word || word.length === 0) return false;
+
+    word = word.toLowerCase();
+    const rows = board.length;
+    const cols = board[0].length;
+
+    const directions = [
+      [-1, -1],
+      [-1, 0],
+      [-1, 1],
+      [0, -1],
+      [0, 1],
+      [1, -1],
+      [1, 0],
+      [1, 1],
+    ];
+
+    const dfs = (r: number, c: number, index: number, visited: boolean[][]): boolean => {
+      // Base case: found the entire word
+      if (index === word.length) return true;
+
+      // Check boundaries
+      if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
+
+      // Check if already visited or wrong letter
+      if (visited[r][c] || board[r][c].toLowerCase() !== word[index]) return false;
+
+      // Mark as visited and explore neighbors
+      visited[r][c] = true;
+
+      for (const [dr, dc] of directions) {
+        if (dfs(r + dr, c + dc, index + 1, visited)) {
+          return true;
+        }
+      }
+
+      // Backtrack: unmark this cell
+      visited[r][c] = false;
+      return false;
+    };
+
+    // Start DFS from every cell that matches first letter
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        if (board[r][c].toLowerCase() === word[0]) {
+          // Create a new visited array for each starting point
+          const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
+
+          if (dfs(r, c, 0, visited)) {
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
 }

@@ -16,7 +16,7 @@ export class RandomBoardGenerator {
     for (let row = 0; row < 4; row++) {
       const rowLetters: string[] = [];
       for (let col = 0; col < 4; col++) {
-        const randomLetter = this.randomLetter();
+        const randomLetter = this.getRandomLetter();
         rowLetters.push(randomLetter);
       }
       board.push(rowLetters);
@@ -26,7 +26,7 @@ export class RandomBoardGenerator {
 
   // TODO: handle language change
 
-  private randomLetter(): string {
+  private getRandomLetter(): string {
     const idx = Math.floor(Math.random() * this.letters.length);
     return this.letters[idx];
   }

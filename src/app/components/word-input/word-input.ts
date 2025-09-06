@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,17 +8,17 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './word-input.scss',
 })
 export class WordInput {
+  @Input() invalidWord: boolean = false;
   @Output() submitWord = new EventEmitter<string>();
 
   word!: string;
 
   onSubmit() {
     const trimmedWord = this.word.trim();
-    console.log('🚀 ~ WordInput ~ onSubmit ~ trimmedWord:', trimmedWord);
     if (trimmedWord.length >= 3) {
       this.submitWord.emit(trimmedWord);
     } else {
-      console.log('word < 3');
+      console.error('word should have minimum 3 letters');
       this.word = '';
     }
   }
