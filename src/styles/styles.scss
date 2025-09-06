@@ -68,12 +68,11 @@ p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
-  margin: 0;
   color: $secondary-color;
 }
 
 .error {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 24px;
   color: $tertiary-color;
@@ -103,6 +102,7 @@ button {
   color: $accent-color;
   padding: 5px 32px;
   float: right;
+  cursor: pointer;
 
   &:hover {
     background-color: $accent-color;
@@ -117,4 +117,11 @@ button {
     opacity: 0.5;
     box-shadow: none;
   }
+}
+
+input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 1rem;
+  margin-right: 6px;
 }

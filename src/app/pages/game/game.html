@@ -1,5 +1,12 @@
-<app-board [board]="board"></app-board>
+<div class="game-container">
+  <div class="game">
+    <div class="board">
+      <app-board [board]="board"></app-board>
+    </div>
+    <div class="score">
+      <app-score [foundWords]="foundWords" [score]="score"></app-score>
+    </div>
+  </div>
 
-<app-word-input [invalidWord]="invalidWord" (submitWord)="submitWord($event)"></app-word-input>
-
-<app-score [foundWords]="foundWords" [score]="score"></app-score>
+  <app-word-input [invalidWord]="invalidWord" (submitWord)="submitWord($event)"></app-word-input>
+</div>
