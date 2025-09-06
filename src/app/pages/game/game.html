@@ -1,5 +1,5 @@
-<app-board></app-board>
+<app-board [board]="board"></app-board>
 
-<app-word-input></app-word-input>
+<app-word-input (submitWord)="submitWord($event)"></app-word-input>
 
-<app-score></app-score>
+<app-score [foundWords]="foundWords" [score]="score"></app-score>

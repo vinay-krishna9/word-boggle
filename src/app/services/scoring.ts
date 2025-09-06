@@ -18,6 +18,7 @@ export class Scoring {
 
     for (const word of words) {
       const length = word.length;
+      console.log('🚀 ~ Scoring ~ calculateScore ~ score:', score);
 
       // too short → no score
       if (length < 3) continue;

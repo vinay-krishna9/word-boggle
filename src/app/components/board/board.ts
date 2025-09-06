@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -8,10 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './board.scss',
 })
 export class Board {
-  board: string[][] = [
-    ['C', 'A', 'T', 'S'],
-    ['D', 'O', 'G', 'E'],
-    ['B', 'I', 'R', 'D'],
-    ['F', 'I', 'S', 'H'],
-  ];
+  @Input() board!: string[][];
 }
