@@ -2,9 +2,11 @@
   @for (row of board; track $index) {
   <div class="board-row">
     @for (cell of row; track $index) {
-    <div class="board-cell">
-      <h1>{{ cell }}</h1>
-    </div>
+    <button class="dice" (click)="selectLetter(cell)">
+      <h1 class="board-cell">
+        {{ cell }}
+      </h1>
+    </button>
     }
   </div>
   }

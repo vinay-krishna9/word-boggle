@@ -1,4 +1,4 @@
-@import '../../../styles/styles.scss';
+@import '../../../styles/variables';
 
 .board {
   display: grid;
@@ -13,14 +13,23 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
-  }
 
-  .board-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    user-select: none;
+    .dice {
+      background-color: transparent;
+      background-color: $accent-color;
+      border: 1px solid $secondary-color;
+      cursor: pointer;
+      &:hover {
+        transition: 0.1s all;
+        transform: scale(0.95);
+      }
+    }
+
+    .board-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
   }
 }

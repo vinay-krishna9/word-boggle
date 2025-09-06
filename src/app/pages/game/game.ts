@@ -20,6 +20,7 @@ export class Game {
   score = 0;
   board: string[][] = [];
   invalidWord = false;
+  clickedWord: string = '';
 
   constructor() {
     effect(() => {
@@ -38,11 +39,17 @@ export class Game {
     if (!this.foundWords.includes(word) && this._scoring.isWordValid(this.board, word)) {
       this.foundWords.push(word);
       this.score = this._scoring.calculateScore(this.foundWords);
+      this.clickedWord = '';
       this.invalidWord = false;
       console.log('🚀 ~ Game ~ submitWord ~ score:', this.score);
     } else {
       this.invalidWord = true;
+      this.clickedWord = '';
       console.error(`Invalid or duplicate word: ${word}`);
     }
+  }
+
+  appenWord(letter: string) {
+    this.clickedWord += letter;
   }
 }

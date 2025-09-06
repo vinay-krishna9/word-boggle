@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class Board {
   @Input() board!: string[][];
+  @Output() selectedLetter = new EventEmitter<string>();
+
+  selectLetter(letter: string) {
+    this.selectedLetter.emit(letter.toLowerCase());
+  }
 }
