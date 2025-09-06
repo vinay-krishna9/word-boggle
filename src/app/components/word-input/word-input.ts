@@ -28,11 +28,9 @@ export class WordInput {
     if (trimmedWord.length >= 3) {
       this.submitWord.emit(trimmedWord);
       this.word = '';
-      this.clickedWord = '';
     } else {
       console.error('word should have minimum 3 letters');
       this.word = '';
-      this.clickedWord = '';
     }
   }
 }
