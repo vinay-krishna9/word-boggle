@@ -3,6 +3,7 @@ import { Board } from '../../components/board/board';
 import { WordInput } from '../../components/word-input/word-input';
 import { Score } from '../../components/score/score';
 import { Scoring } from '../../services/scoring';
+import { RandomBoardGenerator } from '../../services/random-board-generator';
 
 @Component({
   selector: 'app-game',
@@ -12,15 +13,21 @@ import { Scoring } from '../../services/scoring';
 })
 export class Game {
   private _scoring = inject(Scoring);
+  private _randomBoard = inject(RandomBoardGenerator);
 
   foundWords: string[] = [];
   score = 0;
-  board: string[][] = [
-    ['C', 'A', 'T', 'S'],
-    ['D', 'O', 'G', 'E'],
-    ['B', 'I', 'R', 'D'],
-    ['F', 'I', 'S', 'H'],
-  ];
+  board: string[][] = [];
+
+  constructor() {
+    this.startNewGame();
+  }
+
+  startNewGame() {
+    this.board = this._randomBoard.generateBoard();
+    this.foundWords = [];
+    this.score = 0;
+  }
 
   submitWord(word: string) {
     console.log('🚀 ~ Game ~ submitWord ~ word:', word);
