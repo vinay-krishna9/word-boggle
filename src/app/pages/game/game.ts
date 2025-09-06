@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { Board } from '../../components/board/board';
 import { WordInput } from '../../components/word-input/word-input';
 import { Score } from '../../components/score/score';
 import { Scoring } from '../../services/scoring';
-import { RandomBoardGenerator } from '../../services/random-board-generator';
+import { BoardGenerator } from '../../services/board-generator';
 import { WordsFound } from '../../components/words-found/words-found';
 
 @Component({
@@ -14,7 +14,7 @@ import { WordsFound } from '../../components/words-found/words-found';
 })
 export class Game {
   private _scoring = inject(Scoring);
-  private _randomBoard = inject(RandomBoardGenerator);
+  private _genBoard = inject(BoardGenerator);
 
   foundWords: string[] = [];
   score = 0;
@@ -22,11 +22,14 @@ export class Game {
   invalidWord = false;
 
   constructor() {
-    this.startNewGame();
+    effect(() => {
+      this._genBoard.newGameTrigger();
+      this.startNewGame();
+    });
   }
 
   startNewGame() {
-    this.board = this._randomBoard.generateBoard();
+    this.board = this._genBoard.generateBoard();
     this.foundWords = [];
     this.score = 0;
   }

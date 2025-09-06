@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RandomBoardGenerator } from './random-board-generator';
+import { BoardGenerator } from './board-generator';
 
-describe('RandomBoardGenerator', () => {
-  let service: RandomBoardGenerator;
+describe('BoardGenerator', () => {
+  let service: BoardGenerator;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RandomBoardGenerator);
+    service = TestBed.inject(BoardGenerator);
   });
 
   it('should be created', () => {

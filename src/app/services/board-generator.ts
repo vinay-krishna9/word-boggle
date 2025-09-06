@@ -1,12 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Language, LETTERS } from '../shared/constants/letters.config';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RandomBoardGenerator {
+export class BoardGenerator {
   private currentLanguage: Language = 'english';
   private letters = LETTERS[this.currentLanguage];
+
+  newGameTrigger = signal(0);
+
+  /**
+   * Detects when new game is to be generated
+   */
+  triggerNewGame() {
+    this.newGameTrigger.update((v) => v + 1);
+  }
 
   /**
    * Generate a 4x4 board with random letters
