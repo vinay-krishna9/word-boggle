@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -10,8 +10,13 @@ export class Dictionary {
 
   private words: Set<string> = new Set();
 
+  loaded = signal(false);
+
   async loadDictionary(): Promise<void> {
-    if (this.words.size > 0) return;
+    if (this.words.size > 0) {
+      this.loaded.set(true); // already loaded
+      return;
+    }
 
     try {
       const dictText = await firstValueFrom(
@@ -24,8 +29,10 @@ export class Dictionary {
       });
 
       console.log('Dictionary loaded successfully');
+      this.loaded.set(true); // signal now true
     } catch (error) {
       console.error('Failed to load dictionary:', error);
+      this.loaded.set(false);
     }
   }
 

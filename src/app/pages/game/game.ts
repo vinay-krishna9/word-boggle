@@ -26,14 +26,19 @@ export class Game implements OnInit {
 
   constructor() {
     this._dictionary.loadDictionary();
-  }
 
-  ngOnInit(): void {
+    // reactive effect
     effect(() => {
+      const dictReady = this._dictionary.loaded();
       this._genBoard.newGameTrigger();
-      this.startNewGame();
+
+      if (dictReady) {
+        this.startNewGame();
+      }
     });
   }
+
+  ngOnInit(): void {}
 
   startNewGame() {
     this.board = this._genBoard.generateBoard();
