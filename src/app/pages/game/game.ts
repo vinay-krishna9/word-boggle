@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Board } from '../../components/board/board';
 import { WordInput } from '../../components/word-input/word-input';
 import { Score } from '../../components/score/score';
 import { Scoring } from '../../services/scoring';
 import { RandomBoardGenerator } from '../../services/random-board-generator';
+import { Dictionary } from '../../services/dictionary';
 
 @Component({
   selector: 'app-game',
@@ -11,16 +12,20 @@ import { RandomBoardGenerator } from '../../services/random-board-generator';
   templateUrl: './game.html',
   styleUrl: './game.scss',
 })
-export class Game {
+export class Game implements OnInit {
   private _scoring = inject(Scoring);
   private _randomBoard = inject(RandomBoardGenerator);
+  private _dictionary = inject(Dictionary);
 
   foundWords: string[] = [];
   score = 0;
   board: string[][] = [];
   invalidWord = false;
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit(): void {
+    this._dictionary.loadDictionary();
     this.startNewGame();
   }
 
@@ -31,7 +36,12 @@ export class Game {
   }
 
   submitWord(word: string) {
-    if (!this.foundWords.includes(word) && this._scoring.isWordValid(this.board, word)) {
+    const isValid =
+      !this.foundWords.includes(word) &&
+      this._scoring.isWordValid(this.board, word) &&
+      this._dictionary.isValidWord(word);
+
+    if (isValid) {
       this.foundWords.push(word);
       this.score = this._scoring.calculateScore(this.foundWords);
       this.invalidWord = false;

@@ -17,6 +17,7 @@ export class WordInput {
     const trimmedWord = this.word.trim();
     if (trimmedWord.length >= 3) {
       this.submitWord.emit(trimmedWord);
+      this.word = '';
     } else {
       console.error('word should have minimum 3 letters');
       this.word = '';
