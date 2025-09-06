@@ -1,1 +1,10 @@
-<p>score works!</p>
+<div class="score">
+  <h3>POINTS</h3>
+  <h1>{{ score }}</h1>
+
+  <ul>
+    @for (word of foundWords; track $index) {
+    <li>{{ word }}</li>
+    }
+  </ul>
+</div>

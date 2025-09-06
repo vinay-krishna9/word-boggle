@@ -1,1 +1,4 @@
-<p>word-input works!</p>
+<div class="word-input">
+  <input type="text" [(ngModel)]="word" placeholder="Find a word 🔍" (keyup.enter)="onSubmit()" />
+  <button (click)="onSubmit()">Submit</button>
+</div>
