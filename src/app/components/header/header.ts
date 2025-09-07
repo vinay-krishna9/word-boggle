@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { BoardGenerator } from '../../services/board-generator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +8,11 @@ import { BoardGenerator } from '../../services/board-generator';
   styleUrl: './header.scss',
 })
 export class Header {
-  private _genBoard = inject(BoardGenerator);
-
-  startNewGame() {
-    this._genBoard.triggerNewGame();
+  public router = inject(Router);
+  constructor() {
+    console.log(this.router.url);
+  }
+  endGame() {
+    this.router.navigate(['homw']);
   }
 }

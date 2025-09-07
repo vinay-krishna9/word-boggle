@@ -1,4 +1,6 @@
 <header>
   <img src="images/logo.png" alt="" />
-  <button class="primary-button" (click)="startNewGame()">New Game</button>
+  @if (router.url !== '/' && router.url !== '/home') {
+  <button class="primary-button" (click)="endGame()">End Game ❌</button>
+  }
 </header>
