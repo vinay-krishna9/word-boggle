@@ -4,16 +4,14 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  width: 200px;
-  height: 260px;
   border: 2px solid $secondary-color;
   flex-direction: column;
   padding: 15px;
   color: $secondary-color;
 
   .words {
-    width: 200px;
-    height: 280px;
+    display: flex;
+    justify-content: flex-start;
     text-align: center;
     text-wrap: wrap;
     overflow-y: auto;

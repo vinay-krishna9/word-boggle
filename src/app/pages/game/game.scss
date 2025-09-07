@@ -1,21 +1,20 @@
 .game-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   gap: 10px;
+
+  .player-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+  }
 
   .game {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 10px;
-  }
-
-  .score {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
     gap: 10px;
   }
 }

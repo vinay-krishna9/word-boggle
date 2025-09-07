@@ -1,8 +1,8 @@
 <div class="words-found">
   <h3>WORDS</h3>
   <div class="words scroll">
-    @for (word of foundWords; track $index) {
-    <p class="caption">{{ word }}</p>
+    @for (word of foundWords; track $index; let last = $last) {
+    <span class="caption"> {{ word }}@if (!last) {, } </span>
     }
   </div>
 </div>

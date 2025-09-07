@@ -2,13 +2,19 @@
 
 .score {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  width: 200px;
-  height: 112px;
-  border: 2px solid $secondary-color;
+  align-items: center;
   flex-direction: column;
-  padding: 15px;
+  width: 118px;
+  // padding: 2px ;
+  margin: 10px 24px 0 24px;
   color: $secondary-color;
+  border: 1px solid $secondary-color;
+
+  .player-name {
+    color: $primary-color;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
 }

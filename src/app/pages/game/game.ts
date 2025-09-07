@@ -76,5 +76,6 @@ export class Game {
   handleTimeUp() {
     this.gameOver = true;
     alert(`Time's up! Your final score is ${this.score}`);
+    this.startNewGame();
   }
 }

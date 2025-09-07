@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class Score {
   @Input() score: number = 0;
+
+  playerName: string = 'PLAY1';
 }

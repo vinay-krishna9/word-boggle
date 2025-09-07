@@ -1,15 +1,15 @@
 <div class="game-container">
-  <div class="timer">
-    <app-timer [durationSeconds]="180" (timeUp)="handleTimeUp()"> </app-timer>
+  <div class="player-score">
+    <div class="score">
+      <app-score [score]="score"></app-score>
+    </div>
+    <div class="timer">
+      <app-timer [durationSeconds]="180" (timeUp)="handleTimeUp()"> </app-timer>
+    </div>
   </div>
   <div class="game">
     <div class="board">
       <app-board [board]="board" (selectedLetter)="appenWord($event)"></app-board>
-    </div>
-    <div class="score">
-      <app-score [score]="score"></app-score>
-
-      <app-words-found [foundWords]="foundWords"></app-words-found>
     </div>
   </div>
 
@@ -18,4 +18,6 @@
     [clickedWord]="clickedWord"
     (submitWord)="submitWord($event)"
   ></app-word-input>
+
+  <app-words-found [foundWords]="foundWords"></app-words-found>
 </div>

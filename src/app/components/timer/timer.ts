@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
   styleUrl: './timer.scss',
 })
 export class Timer implements OnInit, OnDestroy {
-  @Input() durationSeconds: number = 180; // default 3 minutes
+  @Input() durationSeconds: number = 180;
   @Output() timeUp = new EventEmitter<void>();
 
   remainingSeconds: number = this.durationSeconds;
@@ -35,7 +35,7 @@ export class Timer implements OnInit, OnDestroy {
   formatTime(): string {
     const min = Math.floor(this.remainingSeconds / 60);
     const sec = this.remainingSeconds % 60;
-    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    return `${min}m ${sec < 10 ? '0' : ''}${sec}s`;
   }
 
   reset() {
