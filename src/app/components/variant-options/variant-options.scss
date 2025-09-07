@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 
-.player-options {
+.variant-options {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,11 +8,11 @@
   margin: 20px 0;
   color: $primary-color;
 
-  .players {
+  .variants {
     display: flex;
     gap: 20px;
 
-    .player-square {
+    .variant-square {
       display: flex;
       justify-content: center;
       align-items: center;

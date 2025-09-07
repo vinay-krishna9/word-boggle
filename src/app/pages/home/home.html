@@ -3,15 +3,20 @@
     <app-player-options
       (selectedNumber)="setGameOptions({ type: 'players', value: $event })"
     ></app-player-options>
-    <app-language-options
-      (language)="setGameOptions({ type: 'language', value: $event })"
-    ></app-language-options>
+    <div class="col">
+      <app-language-options
+        (language)="setGameOptions({ type: 'language', value: $event })"
+      ></app-language-options>
+      <app-variant-options
+        (variant)="setGameOptions({ type: 'variant', value: $event })"
+      ></app-variant-options>
+    </div>
   </div>
   <button
     class="primary-button"
-    [disabled]="!gameOptions.players || !gameOptions.language"
+    [disabled]="!gameOptions.players || !gameOptions.language || !gameOptions.variant"
     (click)="startGame()"
   >
-    Start Game
+    <h1>Lets Play! 🥳</h1>
   </button>
 </div>

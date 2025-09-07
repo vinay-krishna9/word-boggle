@@ -1,0 +1,14 @@
+<div class="variant-options">
+  <h2>VARIANT</h2>
+  <div class="variants">
+    @for (variant of variants; track $index) {
+    <div
+      class="variant-square"
+      [class.active]="selectedVariant === variant.value"
+      (click)="selectVariant(variant.value)"
+    >
+      <h1>{{ variant.name }}</h1>
+    </div>
+    }
+  </div>
+</div>
