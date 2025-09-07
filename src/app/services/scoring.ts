@@ -84,6 +84,7 @@ export class Scoring {
    */
   isWordValid(board: string[][], word: string): boolean {
     if (!word || word.length === 0) return false;
+    console.log(board);
 
     word = word.toUpperCase();
     const rows = board.length;

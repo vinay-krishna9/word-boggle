@@ -45,4 +45,25 @@ describe('Scoring', () => {
       expect(scores).toEqual([0, 2, 3]);
     });
   });
+
+  describe('ValidateWords', () => {
+    it('should validate if the word follows adjaceny rules', () => {
+      const board = [
+        ['E', 'S', 'A', 'D', 'H'],
+        ['B', 'K', 'N', 'L', 'F'],
+        ['Z', 'Y', 'W', 'U', 'A'],
+        ['N', 'L', 'B', 'I', 'Z'],
+        ['C', 'I', 'A', 'E', 'W'],
+      ];
+
+      const validWord = 'snake';
+      const invalidWord = 'lion';
+
+      const isValid = service.isWordValid(board, validWord);
+      const isInvalid = service.isWordValid(board, invalidWord);
+
+      expect(isValid).toBeTrue();
+      expect(isInvalid).toBeFalse();
+    });
+  });
 });

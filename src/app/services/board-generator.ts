@@ -18,7 +18,7 @@ export class BoardGenerator {
   }
 
   /**
-   * Generate a 4x4 board with random letters
+   * Generate a NxN board with random letters
    */
   generateBoard(size: number): string[][] {
     const board: string[][] = [];

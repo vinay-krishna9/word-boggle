@@ -7,7 +7,7 @@ import { BoardGenerator } from '../../services/board-generator';
 import { WordsFound } from '../../components/words-found/words-found';
 import { Dictionary } from '../../services/dictionary';
 import { Timer } from '../../components/timer/timer';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -20,6 +20,7 @@ export class Game {
   private _genBoard = inject(BoardGenerator);
   private _dictionary = inject(Dictionary);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   @ViewChild(Timer) timer?: Timer;
 
@@ -90,7 +91,7 @@ export class Game {
   handleTimeUp() {
     this.gameOver = true;
     alert(`Time's up! Your final score is ${this.scores}`);
-    this.startNewGame();
+    this.router.navigate(['/']);
   }
 
   nextPlayer() {

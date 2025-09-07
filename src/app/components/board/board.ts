@@ -13,7 +13,7 @@ export class Board {
 
   get boardStyle() {
     return {
-      '--board-size': this.board.length,
+      '--board-size': this.board?.length,
     };
   }
 
