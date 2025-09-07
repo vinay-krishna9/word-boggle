@@ -2,41 +2,31 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
 
-## Development server
+Boggle™ is a word game in which players attempt to find words in sequences of adjacent letters on a plastic grid of lettered dice.
+Find full game rules [here](https://en.wikipedia.org/wiki/Boggle#Rules)
+
+## Run instructions
+
+### Running development server
+
+Run npm install to restore dependencies.
 
 To start a local development server, run:
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+#### External dependencies
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+[Angular CLI](https://github.com/angular/angular-cli)
+[RxJS](https://rxjs.dev/)
+[TypesScript](https://www.typescriptlang.org/)
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
+### Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
@@ -44,16 +34,57 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Running end-to-end tests
+## Answers to FIRST PART
 
-For end-to-end (e2e) testing, run:
+Solution to questions in first part are in the file `src/app/services/scoring.ts`
+
+Please checkout to `task/first-part` to find the solutions to the questions
+
+Run `ng serve` on this branch as it has a basic wireframe and a button to run each function and view the results
+
+> Word List Score function: calculateScore() and Multiplayer Score function: calculateMultiplayerScore()
 
 ```bash
-ng e2e
+git checkout task/first-part
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Answer to SECOND PART and Bonus features
 
-## Additional Resources
+Solution that satisfies the requirements in second part is in the `master` branch
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Run `ng serve` on this branch for finished version of the game
+
+```bash
+git checkout master
+```
+
+## View Git Commit History
+
+This zip includes the full Git repository in .git folder (maybe hidden)
+
+To inspect the commit history:
+
+```bash
+git log --oneline
+
+// to view the commit graph
+git log --oneline --graph --decorate
+```
+
+## Adapted code
+
+- This project contains some code and ideas with the assistance of ChatGPT
+  (OpenAI). However, ChatGPT was used for brainstorming, debugging hints, and generating
+  example code snippets. However, not all code was copy-pasted; a large part of
+  the implementation was written, polished, and tested by me.
+
+- For Angular specific code like components, services, routing etc.
+  Source: https://angular.dev/overview
+
+- board-validator.service.ts → DFS adjacency algorithm adapted from geeksforgeeks
+
+  - Source: https://www.geeksforgeeks.org/dsa/boggle-find-possible-words-board-characters/
+  - Source: https://www.geeksforgeeks.org/dsa/depth-first-search-or-dfs-for-a-graph/
+
+- timer.component.ts → setInterval handling adapted from MDN examples
+  Source: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
