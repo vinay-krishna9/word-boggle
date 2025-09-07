@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Game } from './pages/game/game';
 import { Header } from './components/header/header';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Game, Header],
+  imports: [Header, RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
