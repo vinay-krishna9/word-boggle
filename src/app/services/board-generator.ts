@@ -20,11 +20,11 @@ export class BoardGenerator {
   /**
    * Generate a 4x4 board with random letters
    */
-  generateBoard(): string[][] {
+  generateBoard(size: number): string[][] {
     const board: string[][] = [];
-    for (let row = 0; row < 4; row++) {
+    for (let row = 0; row < size; row++) {
       const rowLetters: string[] = [];
-      for (let col = 0; col < 4; col++) {
+      for (let col = 0; col < size; col++) {
         const randomLetter = this.getRandomLetter();
         rowLetters.push(randomLetter);
       }

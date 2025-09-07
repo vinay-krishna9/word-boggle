@@ -1,4 +1,4 @@
-<div class="board">
+<div class="board" [ngStyle]="boardStyle">
   @for (row of board; track $index) {
   <div class="board-row">
     @for (cell of row; track $index) {

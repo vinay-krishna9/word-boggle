@@ -2,7 +2,7 @@
 
 .board {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(var(--board-size), 1fr);
   gap: 5px;
   width: 450px;
   height: 450px;
@@ -11,7 +11,7 @@
 
   .board-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(var(--board-size), 1fr);
     gap: 6px;
 
     .dice {

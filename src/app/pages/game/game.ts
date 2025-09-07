@@ -32,12 +32,14 @@ export class Game {
   playerWords: string[][] = [];
   playersCount = 1;
   languageSelected = 'en';
+  boardSize = 4;
   currentPlayer = 0;
 
   constructor() {
     this.route.queryParams.subscribe((params) => {
       this.playersCount = +params['players'] || 1;
       this.languageSelected = params['lang'] || 'en';
+      this.boardSize = params['variant'] || 4;
 
       this._dictionary.loadDictionary(this.languageSelected.toLowerCase());
     });
@@ -45,7 +47,7 @@ export class Game {
   }
 
   startNewGame() {
-    this.board = this._genBoard.generateBoard();
+    this.board = this._genBoard.generateBoard(this.boardSize);
 
     this.playerWords = Array.from({ length: this.playersCount }, () => []);
     this.scores = Array(this.playersCount).fill(0);
