@@ -1,20 +1,28 @@
 @import '../../../styles/variables';
 
-.score {
+.scores {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 118px;
-  // padding: 2px ;
-  margin: 10px 24px 0 24px;
-  color: $secondary-color;
-  border: 1px solid $secondary-color;
 
-  .player-name {
-    color: $primary-color;
-    margin: 0;
-    width: 100%;
-    text-align: center;
+  .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 118px;
+    // padding: 2px ;
+    margin: 10px 24px 0 24px;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
+    &.active {
+      border: 1px solid $primary-color;
+      color: $primary-color;
+    }
+
+    .player-name {
+      color: $primary-color;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

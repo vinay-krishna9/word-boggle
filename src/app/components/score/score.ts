@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './score.scss',
 })
 export class Score {
-  @Input() score: number = 0;
-
-  playerName: string = 'PLAY1';
+  @Input() scores: number[] = [];
+  @Input() currentPlayer: number = 0;
 }

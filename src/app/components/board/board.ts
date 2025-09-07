@@ -12,6 +12,6 @@ export class Board {
   @Output() selectedLetter = new EventEmitter<string>();
 
   selectLetter(letter: string) {
-    this.selectedLetter.emit(letter.toLowerCase());
+    this.selectedLetter.emit(letter.toUpperCase());
   }
 }

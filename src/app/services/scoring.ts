@@ -58,7 +58,7 @@ export class Scoring {
 
     words.forEach((words, playerIndex) => {
       for (const word of words) {
-        const lower = word.toLowerCase();
+        const lower = word.toUpperCase();
         if (!wordOwners.has(lower)) {
           wordOwners.set(lower, new Set());
         }
@@ -69,7 +69,7 @@ export class Scoring {
     // Calculate scores
     return words.map((words, playerIndex) => {
       const uniqueWords = words.filter((word) => {
-        const owners = wordOwners.get(word.toLowerCase());
+        const owners = wordOwners.get(word.toUpperCase());
         return owners && owners.size === 1 && owners.has(playerIndex);
       });
       return this.calculateScore(uniqueWords);
@@ -85,7 +85,7 @@ export class Scoring {
   isWordValid(board: string[][], word: string): boolean {
     if (!word || word.length === 0) return false;
 
-    word = word.toLowerCase();
+    word = word.toUpperCase();
     const rows = board.length;
     const cols = board[0].length;
 
@@ -108,7 +108,7 @@ export class Scoring {
       if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
 
       // Check if already visited or wrong letter
-      if (visited[r][c] || board[r][c].toLowerCase() !== word[index]) return false;
+      if (visited[r][c] || board[r][c].toUpperCase() !== word[index]) return false;
 
       // Mark as visited and explore neighbors
       visited[r][c] = true;
@@ -127,7 +127,7 @@ export class Scoring {
     // Start DFS from every cell that matches first letter
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        if (board[r][c].toLowerCase() === word[0]) {
+        if (board[r][c].toUpperCase() === word[0]) {
           // Create a new visited array for each starting point
           const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
 

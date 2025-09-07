@@ -1,16 +1,16 @@
+<div class="timer">
+  <app-timer [durationSeconds]="180" (timeUp)="handleTimeUp()"> </app-timer>
+</div>
 <div class="game-container">
   <div class="player-score">
-    <div class="score">
-      <app-score [score]="score"></app-score>
-    </div>
-    <div class="timer">
-      <app-timer [durationSeconds]="180" (timeUp)="handleTimeUp()"> </app-timer>
-    </div>
+    <app-score [currentPlayer]="currentPlayer" [scores]="scores"></app-score>
   </div>
-  <div class="game">
-    <div class="board">
-      <app-board [board]="board" (selectedLetter)="appenWord($event)"></app-board>
-    </div>
+
+  <div class="board">
+    <app-board [board]="board" (selectedLetter)="appenWord($event)"></app-board>
+    @if(playersCount === 1) {
+    <app-words-found [foundWords]="foundWords"></app-words-found>
+    }
   </div>
 
   <app-word-input
@@ -18,6 +18,4 @@
     [clickedWord]="clickedWord"
     (submitWord)="submitWord($event)"
   ></app-word-input>
-
-  <app-words-found [foundWords]="foundWords"></app-words-found>
 </div>

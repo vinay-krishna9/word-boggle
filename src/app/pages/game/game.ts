@@ -7,6 +7,7 @@ import { BoardGenerator } from '../../services/board-generator';
 import { WordsFound } from '../../components/words-found/words-found';
 import { Dictionary } from '../../services/dictionary';
 import { Timer } from '../../components/timer/timer';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -18,53 +19,65 @@ export class Game {
   private _scoring = inject(Scoring);
   private _genBoard = inject(BoardGenerator);
   private _dictionary = inject(Dictionary);
+  private route = inject(ActivatedRoute);
 
   @ViewChild(Timer) timer?: Timer;
 
   foundWords: string[] = [];
-  score = 0;
+  scores: number[] = [];
   board: string[][] = [];
   invalidWord = false;
   clickedWord: string = '';
   gameOver: boolean = false;
+  playerWords: string[][] = [];
+  playersCount = 1;
+  currentPlayer = 0;
 
   constructor() {
     this._dictionary.loadDictionary();
 
-    // reactive effect
-    effect(() => {
-      const dictReady = this._dictionary.loaded();
-      this._genBoard.newGameTrigger();
+    this.route.queryParams.subscribe((params) => {
+      this.playersCount = +params['players'] || 1;
 
-      if (dictReady) {
-        this.startNewGame();
-      }
+      this.startNewGame();
     });
   }
 
   startNewGame() {
     this.board = this._genBoard.generateBoard();
-    this.foundWords = [];
-    this.score = 0;
+
+    this.playerWords = Array.from({ length: this.playersCount }, () => []);
+    this.scores = Array(this.playersCount).fill(0);
     this.gameOver = false;
+    this.invalidWord = false;
+    this.currentPlayer = 0;
     if (this.timer) this.timer.reset();
   }
 
   submitWord(word: string) {
+    word = word.toUpperCase();
     const isValid =
-      !this.foundWords.includes(word) &&
+      !this.playerWords[this.currentPlayer].includes(word) &&
       this._scoring.isWordValid(this.board, word) &&
       this._dictionary.isValidWord(word);
 
     if (isValid) {
-      this.foundWords.push(word);
-      this.score = this._scoring.calculateScore(this.foundWords);
+      this.playerWords[this.currentPlayer].push(word);
+      if (this.playersCount === 1) {
+        console.log(this.playerWords[0]);
+
+        this.scores[0] = this._scoring.calculateScore(this.playerWords[0]);
+      } else {
+        this.scores = this._scoring.calculateMultiplayerScore(this.playerWords);
+      }
+
       this.clickedWord = '';
       this.invalidWord = false;
-      console.log('🚀 ~ Game ~ submitWord ~ score:', this.score);
+      this.nextPlayer();
+      console.log('🚀 ~ Game ~ submitWord ~ score:', this.scores);
     } else {
-      this.invalidWord = true;
       this.clickedWord = '';
+      this.invalidWord = true;
       console.error(`Invalid or duplicate word: ${word}`);
     }
   }
@@ -75,7 +88,11 @@ export class Game {
 
   handleTimeUp() {
     this.gameOver = true;
-    alert(`Time's up! Your final score is ${this.score}`);
+    alert(`Time's up! Your final score is ${this.scores}`);
     this.startNewGame();
+  }
+
+  nextPlayer() {
+    this.currentPlayer = (this.currentPlayer + 1) % this.playersCount;
   }
 }

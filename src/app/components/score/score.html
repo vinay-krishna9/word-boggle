@@ -1,4 +1,8 @@
-<div class="score">
-  <p class="player-name caption">{{ playerName }}</p>
-  <h2 class="player-score">{{ score }}</h2>
+<div class="scores">
+  @for (score of scores; track $index) {
+  <div class="score" [class.active]="currentPlayer === $index">
+    <p class="player-name caption">Player {{ $index + 1 }}</p>
+    <h2 class="player-score">{{ score }}</h2>
+  </div>
+  }
 </div>
