@@ -9,7 +9,7 @@
   <div class="board">
     <app-board [board]="board" (selectedLetter)="appenWord($event)"></app-board>
     @if(playersCount === 1) {
-    <app-words-found [foundWords]="foundWords"></app-words-found>
+    <app-words-found [foundWords]="playerWords[0]"></app-words-found>
     }
   </div>
 

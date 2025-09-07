@@ -3,6 +3,7 @@
 .words-found {
   display: flex;
   align-items: center;
+  flex-direction: column;
   margin: 30px 0;
   height: 418px;
   border: 2px solid $secondary-color;
@@ -13,9 +14,9 @@
 
   .words {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
-    text-wrap: wrap;
     overflow-y: auto;
   }
 }

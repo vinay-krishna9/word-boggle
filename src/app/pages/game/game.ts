@@ -67,8 +67,6 @@ export class Game {
     if (isValid) {
       this.playerWords[this.currentPlayer].push(word);
       if (this.playersCount === 1) {
-        console.log(this.playerWords[0]);
-
         this.scores[0] = this._scoring.calculateScore(this.playerWords[0]);
       } else {
         this.scores = this._scoring.calculateMultiplayerScore(this.playerWords);
