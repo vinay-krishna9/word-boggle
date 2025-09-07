@@ -17,7 +17,6 @@ h1 {
   font-weight: 700;
   line-height: 64px;
   margin: 0;
-  color: $secondary-color;
 
   @media (max-width: $breakpoint-md) {
     font-size: 36px;
@@ -30,7 +29,6 @@ h2 {
   font-weight: 600;
   line-height: 52px;
   margin: 0;
-  color: $secondary-color;
 
   @media (max-width: $breakpoint-md) {
     font-size: 30px;
@@ -43,7 +41,6 @@ h3 {
   font-weight: 500;
   line-height: 40px;
   margin: 0;
-  color: $secondary-color;
 
   @media (max-width: $breakpoint-md) {
     font-size: 24px;

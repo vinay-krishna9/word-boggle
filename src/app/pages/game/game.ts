@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, ViewChild } from '@angular/core';
 import { Board } from '../../components/board/board';
 import { WordInput } from '../../components/word-input/word-input';
 import { Score } from '../../components/score/score';
@@ -6,14 +6,15 @@ import { Scoring } from '../../services/scoring';
 import { BoardGenerator } from '../../services/board-generator';
 import { WordsFound } from '../../components/words-found/words-found';
 import { Dictionary } from '../../services/dictionary';
+import { Timer } from '../../components/timer/timer';
 
 @Component({
   selector: 'app-game',
-  imports: [Board, WordInput, Score, WordsFound],
+  imports: [Board, WordInput, Score, WordsFound, Timer],
   templateUrl: './game.html',
   styleUrl: './game.scss',
 })
-export class Game implements OnInit {
+export class Game {
   private _scoring = inject(Scoring);
   private _genBoard = inject(BoardGenerator);
   private _dictionary = inject(Dictionary);
@@ -23,6 +24,7 @@ export class Game implements OnInit {
   board: string[][] = [];
   invalidWord = false;
   clickedWord: string = '';
+  gameOver: boolean = false;
 
   constructor() {
     this._dictionary.loadDictionary();
@@ -38,12 +40,11 @@ export class Game implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   startNewGame() {
     this.board = this._genBoard.generateBoard();
     this.foundWords = [];
     this.score = 0;
+    this.gameOver = false;
   }
 
   submitWord(word: string) {
@@ -67,5 +68,10 @@ export class Game implements OnInit {
 
   appenWord(letter: string) {
     this.clickedWord += letter;
+  }
+
+  handleTimeUp() {
+    this.gameOver = true;
+    alert(`Time's up! Your final score is ${this.score}`);
   }
 }
