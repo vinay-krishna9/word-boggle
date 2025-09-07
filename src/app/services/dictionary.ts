@@ -12,7 +12,7 @@ export class Dictionary {
 
   loaded = signal(false);
 
-  async loadDictionary(): Promise<void> {
+  async loadDictionary(lang: string): Promise<void> {
     if (this.words.size > 0) {
       this.loaded.set(true); // already loaded
       return;
@@ -20,7 +20,7 @@ export class Dictionary {
 
     try {
       const dictText = await firstValueFrom(
-        this.http.get('dictionary/english.txt', { responseType: 'text' })
+        this.http.get(`dictionary/${lang}_dictionary.txt`, { responseType: 'text' })
       );
 
       dictText.split(/\r?\n/).forEach((w) => {

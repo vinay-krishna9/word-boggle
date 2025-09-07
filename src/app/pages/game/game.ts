@@ -31,16 +31,17 @@ export class Game {
   gameOver: boolean = false;
   playerWords: string[][] = [];
   playersCount = 1;
+  languageSelected = 'en';
   currentPlayer = 0;
 
   constructor() {
-    this._dictionary.loadDictionary();
-
     this.route.queryParams.subscribe((params) => {
       this.playersCount = +params['players'] || 1;
+      this.languageSelected = params['lang'] || 'en';
 
-      this.startNewGame();
+      this._dictionary.loadDictionary(this.languageSelected.toLowerCase());
     });
+    this.startNewGame();
   }
 
   startNewGame() {

@@ -1,0 +1,12 @@
+<div class="language-options">
+  <h2>LANGUAGE</h2>
+  @for (languages of ["EN", "DE", "FR"]; track $index) {
+  <div
+    class="language-square"
+    [class.active]="selectedLanguage === languages"
+    (click)="selectLanguage(languages)"
+  >
+    <h1>{{ languages }}</h1>
+  </div>
+  }
+</div>

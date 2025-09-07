@@ -1,25 +1,35 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayerOptions } from '../../components/player-options/player-options';
+import { LanguageOptions } from '../../components/language-options/language-options';
 
 @Component({
   selector: 'app-home',
-  imports: [PlayerOptions],
+  imports: [PlayerOptions, LanguageOptions],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
   private router = inject(Router);
 
-  selectedPlayers!: string;
+  gameOptions: { players?: number; language?: string } = {};
 
-  setGameOptions(selectedOption: string) {
-    this.selectedPlayers = selectedOption;
+  setGameOptions(option: { type: 'players' | 'language'; value: any }) {
+    if (option.type === 'players') {
+      this.gameOptions.players = option.value;
+    } else if (option.type === 'language') {
+      this.gameOptions.language = option.value;
+    }
   }
 
   startGame() {
-    if (this.selectedPlayers) {
-      this.router.navigate(['/game'], { queryParams: { players: this.selectedPlayers } });
+    if (this.gameOptions.players && this.gameOptions.language) {
+      this.router.navigate(['/game'], {
+        queryParams: {
+          players: this.gameOptions.players,
+          lang: this.gameOptions.language,
+        },
+      });
     }
   }
 }

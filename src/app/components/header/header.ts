@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
 })
 export class Header {
   public router = inject(Router);
-  constructor() {
-    console.log(this.router.url);
-  }
+
   endGame() {
     this.router.navigate(['homw']);
   }
