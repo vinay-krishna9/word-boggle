@@ -1,0 +1,12 @@
+<div class="player-options">
+  <h2>PLAYERS</h2>
+  @for (players of [1,2,3,4]; track $index) {
+  <div
+    class="player-square"
+    [class.active]="selectedPlayers === players"
+    (click)="selectPlayers(players)"
+  >
+    <h1>{{ players }}</h1>
+  </div>
+  }
+</div>

@@ -1,0 +1,6 @@
+<div class="home">
+  <app-player-options (selectedNumber)="setGameOptions($event)"></app-player-options>
+  <button class="primary-button" [disabled]="!selectedPlayers" (click)="startGame()">
+    Start Game
+  </button>
+</div>
