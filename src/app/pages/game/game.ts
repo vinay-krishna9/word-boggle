@@ -19,6 +19,8 @@ export class Game {
   private _genBoard = inject(BoardGenerator);
   private _dictionary = inject(Dictionary);
 
+  @ViewChild(Timer) timer?: Timer;
+
   foundWords: string[] = [];
   score = 0;
   board: string[][] = [];
@@ -45,6 +47,7 @@ export class Game {
     this.foundWords = [];
     this.score = 0;
     this.gameOver = false;
+    if (this.timer) this.timer.reset();
   }
 
   submitWord(word: string) {
