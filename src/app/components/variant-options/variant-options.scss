@@ -2,8 +2,8 @@
 
 .variant-options {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   margin: 20px 0;
   color: $primary-color;

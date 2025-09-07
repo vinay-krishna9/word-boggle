@@ -1,11 +1,25 @@
+@import '../../../styles/variables';
+
 .home {
   display: flex;
   gap: 100px;
+  align-items: start;
   flex-direction: column;
 
   .game-options {
     display: flex;
-    gap: 100px;
+    flex-direction: column;
     justify-content: center;
+    width: 100%;
+  }
+
+  h3 {
+    margin: 25px 0;
+    color: $secondary-color;
+    text-align: center;
+  }
+
+  .primary-button {
+    width: 100%;
   }
 }
