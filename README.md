@@ -34,49 +34,7 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-## Answers to FIRST PART
-
-Solution to questions in first part are in the file `src/app/services/scoring.ts`
-
-Please checkout to `task/first-part` to find the solutions to the questions
-
-Run `ng serve` on this branch as it has a basic wireframe and a button to run each function and view the results
-
-> Word List Score function: calculateScore() and Multiplayer Score function: calculateMultiplayerScore()
-
-```bash
-git checkout task/first-part
-```
-
-## Answer to SECOND PART and Bonus features
-
-Solution that satisfies the requirements in second part is in the `master` branch
-
-Run `ng serve` on this branch for finished version of the game
-
-```bash
-git checkout master
-```
-
-## View Git Commit History
-
-This zip includes the full Git repository in .git folder (maybe hidden)
-
-To inspect the commit history:
-
-```bash
-git log --oneline
-
-// to view the commit graph
-git log --oneline --graph --decorate
-```
-
 ## Adapted code
-
-- This project contains some code and ideas with the assistance of ChatGPT
-  (OpenAI). However, ChatGPT was used for brainstorming, debugging hints, and generating
-  example code snippets. However, not all code was copy-pasted; a large part of
-  the implementation was written, polished, and tested by me.
 
 - For Angular specific code like components, services, routing etc.
   Source: https://angular.dev/overview
